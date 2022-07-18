@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import './Components/Player';
+import Player from './Components/Player';
+import Betting from './Components/Betting';
+import LobbyConfig from './Components/LobbyConfig';
 
-function App() {
+const App = () => {
+  const [isInGame, setIsInGame] = useState(false);
+  const handleClick = () => {
+    setIsInGame(!isInGame);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <nav>Hello World</nav>
+      <section className='lobby-configuration'>
+        <LobbyConfig setup={!isInGame} handleClick={handleClick}/>
+      </section>
+      <section className='players-container'>
+        <Player name='nico'/>
+        <Player name='wig'/>
+        <Player name='ben'/>
+      </section>
+      <section className='betting-container'>
+        <Betting prevBet={false} />
+      </section>
+    </main>
   );
 }
 

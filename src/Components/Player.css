@@ -1,0 +1,12 @@
+.player {
+    background-color: var(--main-color);
+    color: white;
+    margin: 1rem 1rem;
+    padding: 1rem;
+}
+
+.player:hover {
+    background-color: var(--main-compliment-color);
+    cursor: pointer;
+    color: black;
+}
