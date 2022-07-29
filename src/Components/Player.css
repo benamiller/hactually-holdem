@@ -1,12 +1,57 @@
 .player {
-    background-color: var(--main-color);
-    color: white;
-    margin: 1rem 1rem;
-    padding: 1rem;
+    background-color: var(--main-compliment-color);
+    box-shadow: 2px 3px var(--main-accent-color);
+    color: black;
+    margin: 2rem 2rem;
+    padding: 2rem;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
 }
 
 .player:hover {
-    background-color: var(--main-compliment-color);
+    background-color: var(--main-color);
     cursor: pointer;
-    color: black;
+    color: white;
+}
+
+.player > .image-wrapper {
+    width: 7rem;
+    height: 7rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid var(--main-accent-color);
+}
+
+img {
+    margin: 0 auto;
+    margin-left: -25%;
+    height: 100%;
+    width: auto;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.player-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 25rem;
+}
+
+.player-container p {
+    margin: 0.7rem;
+}
+
+.active::after {
+    font-size: 1.4rem;
+    content: '\21A7';
+    position: absolute;
 }
