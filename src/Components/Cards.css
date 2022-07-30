@@ -11,8 +11,9 @@
 
 .card-face:hover {
     position: relative;
-    top: 0.2rem;
-    left: 0.1rem;
+    bottom: 0.2rem;
+    right: 0.1rem;
+    box-shadow: 4px 6px var(--main-accent-color);
 }
 
 .card-face .number {
