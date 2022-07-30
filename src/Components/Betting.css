@@ -24,7 +24,7 @@ button:hover {
 }
 
 .non-active-player button {
-    color: black;
-    background-color: var(--secondary-accent-color);
+    color: var(--secondary-color);
+    background-color: var(--main-color);
     pointer-events: none;
 }
