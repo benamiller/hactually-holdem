@@ -16,17 +16,35 @@ const App = () => {
 
   // Should set to next player in players array
   const finishTurn = () => {
-    setCurrentPlayerTurn('Nico');
-  }
-
-  const handleBetAction = () => {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
     setCurrentPlayerTurn(playerNames[currentPlayerIndex]);
     console.log(currentPlayerIndex);
   }
 
+  const handleCheck = () => {
+    console.log('Check');
+    finishTurn();
+  }
+
+  const handleRaise = () => {
+    console.log('Raise');
+    finishTurn();
+  }
+
+  const handleFold = () => {
+    console.log('Fold');
+    finishTurn();
+  }
+
   const players = playerNames.map((player) => {
-    return <Player name={player} money={startingAmount} bet={0} turn={currentPlayerTurn} handleClick={handleBetAction}/>
+    return <Player 
+              name={player}
+              money={startingAmount}
+              bet={0}
+              turn={currentPlayerTurn}
+              handleCheck={handleCheck}
+              handleRaise={handleRaise}
+              handleBet={handleFold}/>
   });
 
   return (
