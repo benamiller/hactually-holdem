@@ -3,6 +3,7 @@
 body {
   font-family: 'Roboto Mono';
   font-weight: 700;
+  overflow: hidden;
 }
 
 :root {

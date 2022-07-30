@@ -4,6 +4,7 @@ import './Components/Player';
 import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
+import Deck from './Components/Deck';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 
@@ -82,6 +83,9 @@ const App = () => {
       </section>
       <section className='cards-container'>
         <Cards numbers={[2, 6]}/>
+      </section>
+      <section className='card-deck-container'>
+        <Deck />
       </section>
     </main>
   );
