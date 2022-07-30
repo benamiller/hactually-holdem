@@ -22,6 +22,7 @@ nav {
 .lobby-configuration {
   position: absolute;
   right: 0;
+  top: 1rem;
 }
 
 .players-container {

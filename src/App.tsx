@@ -5,7 +5,7 @@ import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 
 const firebaseConfig = {
   databaseURL: "https://hactually-holdem-default-rtdb.firebaseio.com"
@@ -27,6 +27,7 @@ const App = () => {
     onValue(indexRef, (snapshot) => {
       const data = snapshot.val();
       setPlayerIndex(data);
+      console.log(data);
     });
   }, []);
   
@@ -38,6 +39,9 @@ const App = () => {
   const finishTurn = () => {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
     setCurrentPlayerTurn(playerNames[currentPlayerIndex]);
+    set(ref(database, 'lobby/87ue8e/currentPlayerIndex'), {
+      index: currentPlayerIndex
+    });
     console.log(currentPlayerIndex);
   }
 
