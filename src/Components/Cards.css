@@ -6,10 +6,13 @@
     border: 2px solid var(--main-accent-color);
     margin: 0 1rem;
     box-shadow: 3px 4px var(--main-accent-color);
+    font-size: 25px;
 }
 
-.card-face {
-    font-size: 25px;
+.card-face:hover {
+    position: relative;
+    top: 0.2rem;
+    left: 0.1rem;
 }
 
 .card-face .number {
