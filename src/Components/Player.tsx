@@ -6,10 +6,12 @@ interface PlayerProps {
     money: number;
     bet: number;
     turn: string;
-    handleClick: () => void;
+    handleCheck: () => void;
+    handleRaise: () => void;
+    handleBet: () => void;
 }
 
-const Player = ({name, money, bet, turn, handleClick}: PlayerProps) => {
+const Player = ({name, money, bet, turn, handleCheck, handleRaise, handleBet}: PlayerProps) => {
     const isTurn = turn === name;
     return (
         <div className={`player-container ${isTurn ? "active" : "not-active"}`}>
@@ -26,7 +28,7 @@ const Player = ({name, money, bet, turn, handleClick}: PlayerProps) => {
                 </p>
             </section>
             <section className='actions'>
-                <Betting prevBet={false} isTurn={isTurn} handleClick={handleClick}/>
+                <Betting prevBet={true} isTurn={isTurn} handleCheck={handleCheck} handleRaise={handleRaise} handleBet={handleBet}/>
             </section>
         </div>
     );
