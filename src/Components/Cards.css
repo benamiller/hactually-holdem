@@ -1,0 +1,47 @@
+.card-face {
+    border-radius: 10px;
+    width: 16rem;
+    height: 22rem;
+    background-color: var(--main-compliment-color);
+    border: 2px solid var(--main-accent-color);
+    margin: 0 1rem;
+    box-shadow: 3px 4px var(--main-accent-color);
+}
+
+.card-face {
+    font-size: 25px;
+}
+
+.card-face .number {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.card-face .top-left::after {
+    content: '\2660';
+    position: relative;
+    top: 0.5rem;
+    left: 1rem;
+}
+
+.card-face .top-right::after {
+    content: '\2660';
+    position: relative;
+    top: -1.6rem;
+    left: 14rem;
+}
+
+.card-face .bottom-left::after {
+    content: '\2660';
+    position: relative;
+    top: 15rem;
+    left: 1rem;
+}
+
+.card-face .bottom-right::after {
+    content: '\2660';
+    position: relative;
+    top: 13rem;
+    left: 14rem;
+}

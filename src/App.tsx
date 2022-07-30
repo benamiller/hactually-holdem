@@ -3,6 +3,7 @@ import './App.css';
 import './Components/Player';
 import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
+import Cards from './Components/Cards';
 
 const App = () => {
   const [isInGame, setIsInGame] = useState(false);
@@ -55,6 +56,9 @@ const App = () => {
       </section>
       <section className='players-container'>
         {players}
+      </section>
+      <section className='cards-container'>
+        <Cards numbers={[2, 6]}/>
       </section>
     </main>
   );

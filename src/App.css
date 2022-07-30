@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Noto+Serif+Display&family=Oswald:wght@200;300&family=Roboto&family=Roboto+Mono:wght@200&family=Square+Peg&display=swap');
+
+body {
+  font-family: 'Roboto Mono';
+  font-weight: 700;
+}
+
 :root {
   --main-color: #131112;
   --secondary-color: #60656F;
@@ -13,9 +20,8 @@ nav {
 }
 
 .lobby-configuration {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  position: absolute;
+  right: 0;
 }
 
 .players-container {
@@ -30,6 +36,13 @@ nav {
   align-items: center;
 }
 
+.cards-container {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
   text-align: center;
+  margin-bottom: 3rem;
 }
