@@ -4,6 +4,15 @@ import './Components/Player';
 import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, onValue } from 'firebase/database';
+
+const firebaseConfig = {
+  databaseURL: "https://hactually-holdem-default-rtdb.firebaseio.com"
+}
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 const App = () => {
   const [isInGame, setIsInGame] = useState(false);
@@ -11,6 +20,16 @@ const App = () => {
   const [currentPlayerTurn, setCurrentPlayerTurn] = useState('Ben');
   const [playerNames, setPlayerNames] = useState<string[]>(['Wig', 'Nico', 'Ben']);
   const [startingAmount, setStartingAmount] = useState(2000);
+  const [playerIndex, setPlayerIndex] = useState('');
+
+  useEffect(() => {
+    const indexRef = ref(database, 'lobby/' + '87ue8e' + '/currentPlayerIndex');
+    onValue(indexRef, (snapshot) => {
+      const data = snapshot.val();
+      setPlayerIndex(data);
+    });
+  }, []);
+  
   const handleClick = () => {
     setIsInGame(!isInGame);
   }
