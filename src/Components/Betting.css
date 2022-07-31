@@ -1,4 +1,4 @@
-button {
+.betting-container button {
     background-color: var(--secondary-color);
     color: var(--main-compliment-color);
     padding: 1.2rem;
@@ -7,13 +7,13 @@ button {
     box-shadow: 0.2rem 0.3rem var(--main-accent-color);
 }
 
-button:active {
+.betting-container button:active {
     position: relative;
     top: 2px;
     box-shadow: 0.1rem 0.2rem var(--main-accent-color);
 }
 
-button:hover {
+.betting-container button:hover {
     cursor: pointer;
     position: relative;
     top: 0.1rem;

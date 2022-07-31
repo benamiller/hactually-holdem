@@ -8,9 +8,9 @@ interface auth {
 
 const Authy = ({loggedIn, handleLogIn, handleLogOut}: auth) => {
     if (loggedIn) {
-        return <div className='auth-container' onClick={handleLogOut}>Sign out</div>
+        return <button className='auth-button' onClick={handleLogOut}>Sign out</button>
     }
-    return <div className='auth-container' onClick={handleLogIn}>Sign in</div>
+    return <button className='auth-button' onClick={handleLogIn}>Sign in</button>
 }
 
 export default Authy;
