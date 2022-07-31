@@ -103,7 +103,7 @@ const App = () => {
 
   return (
     <main>
-      <h1 onClick={signInUser}>Hactually Hold'em</h1>
+      <h1>Hactually Hold'em</h1>
       <section className='lobby-configuration'>
         <LobbyConfig setup={!isInGame} handleClick={handleClick}/>
       </section>
