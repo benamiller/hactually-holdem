@@ -9,7 +9,7 @@ import Authy from './Components/Authy';
 import config from './cred';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
-import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, Auth } from 'firebase/auth';
+import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, Auth, onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = config;
 
