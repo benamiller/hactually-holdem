@@ -6,18 +6,19 @@ interface PlayerProps {
     money: number;
     bet: number;
     turn: string;
+    avatar: string;
     handleCheck: () => void;
     handleRaise: () => void;
     handleBet: () => void;
 }
 
-const Player = ({name, money, bet, turn, handleCheck, handleRaise, handleBet}: PlayerProps) => {
+const Player = ({name, money, bet, turn, avatar, handleCheck, handleRaise, handleBet}: PlayerProps) => {
     const isTurn = turn === name;
     return (
         <div className={`player-container ${isTurn ? "active" : "not-active"}`}>
             <section className='player'>
                 <div className='image-wrapper'>
-                    <img src="https://i.imgur.com/9YsIJr1.jpegß" alt="Player Avatar"></img>
+                    <img src={avatar} alt="Player Avatar"></img>
                 </div>
                 <p>
                 Name: {name}

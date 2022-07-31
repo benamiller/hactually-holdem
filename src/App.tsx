@@ -21,16 +21,20 @@ const App = () => {
   const [isInGame, setIsInGame] = useState(false);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [currentPlayerTurn, setCurrentPlayerTurn] = useState('Ben');
-  const [playerNames, setPlayerNames] = useState<string[]>(['Wig', 'Nico', 'Ben']);
+  const [playerNames, setPlayerNames] = useState([
+    {name: 'Wig', avatar: 'https://i.imgur.com/9YsIJr1.jpegß'},
+    {name: 'Nico', avatar: 'https://i.imgur.com/9YsIJr1.jpegß'},
+    {name: 'Ben', avatar: 'https://lh3.googleusercontent.com/a-/AFdZucoRmoZsPGfdtKV-aFAgAVOl-Y4bmJPql73ywWWnBqQ=s96-c'}
+  ]);
   const [startingAmount, setStartingAmount] = useState(2000);
   const [playerIndex, setPlayerIndex] = useState('');
+  const [userPhoto, setUserPhoto] = useState('');
 
   useEffect(() => {
     const indexRef = ref(database, 'lobby/' + '87ue8g' + '/currentPlayerIndex');
     onValue(indexRef, (snapshot) => {
       const data = snapshot.val();
       setPlayerIndex(data);
-      console.log(data);
     });
   }, []);
   
@@ -45,6 +49,8 @@ const App = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
       const user = result.user;
+      console.log(user);
+      setUserPhoto(user.photoURL || '');
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -67,11 +73,11 @@ const App = () => {
   // Should set to next player in players array
   const finishTurn = () => {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
-    setCurrentPlayerTurn(playerNames[currentPlayerIndex]);
+    setCurrentPlayerTurn(playerNames[currentPlayerIndex]['name']);
     set(ref(database, 'lobby/87ue8g/currentPlayerIndex'), {
       index: currentPlayerIndex
     });
-    console.log(currentPlayerIndex);
+    console.log(`Server: ${currentPlayerIndex}`);
   }
 
   const handleCheck = () => {
@@ -91,14 +97,15 @@ const App = () => {
 
   const players = playerNames.map((player) => {
     return <Player
-              key={player} 
-              name={player}
+              key={player.name} 
+              name={player.name}
               money={startingAmount}
               bet={0}
               turn={currentPlayerTurn}
               handleCheck={handleCheck}
               handleRaise={handleRaise}
-              handleBet={handleFold}/>
+              handleBet={handleFold}
+              avatar={player.avatar} />
   });
 
   return (
