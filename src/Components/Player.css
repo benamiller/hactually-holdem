@@ -2,7 +2,7 @@
     background-color: var(--main-compliment-color);
     box-shadow: 2px 3px var(--main-accent-color);
     color: black;
-    margin: 2rem 2rem;
+    margin: 3.5rem 2rem 0.5rem 2rem;
     padding: 2rem;
     width: 80%;
     display: flex;
@@ -12,7 +12,7 @@
 }
 
 .player:hover {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     cursor: pointer;
     color: white;
 }
@@ -50,7 +50,7 @@ img {
 }
 
 .active::after {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     content: '\21A7';
     position: absolute;
 }

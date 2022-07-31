@@ -16,3 +16,9 @@
 .lobby-config {
     text-align: right;
 }
+
+input {
+    padding: 0.2rem;
+    border: 2px solid var(--main-accent-color);
+    border-radius: 0.3rem;
+}
