@@ -26,6 +26,12 @@ nav {
   top: 1rem;
 }
 
+.auth {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+}
+
 .players-container {
   display: flex;
   justify-content: center;
@@ -47,4 +53,10 @@ nav {
 h1 {
   text-align: center;
   margin-bottom: 3rem;
+}
+
+button:hover {
+  cursor: pointer;
+  position: relative;
+  top: 0.1rem;
 }
