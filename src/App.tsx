@@ -5,10 +5,11 @@ import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
 import Deck from './Components/Deck';
+import Authy from './Components/Authy';
 import config from './cred';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
-import { getAuth, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, Auth } from 'firebase/auth';
 
 const firebaseConfig = config;
 
@@ -29,6 +30,7 @@ const App = () => {
   const [startingAmount, setStartingAmount] = useState(2000);
   const [playerIndex, setPlayerIndex] = useState({index: 0});
   const [userPhoto, setUserPhoto] = useState('');
+  const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
 
   useEffect(() => {
     const indexRef = ref(database, 'lobby/' + '87ue8g' + '/currentPlayerIndex');
@@ -49,8 +51,8 @@ const App = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
       const user = result.user;
-      console.log(user);
       setUserPhoto(user.photoURL || '');
+      console.log(auth);
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -61,7 +63,6 @@ const App = () => {
 
   const signOutUser = () => {
     console.log('Signing out');
-    const auth = getAuth();
     signOut(auth)
     .then(() => {
       console.log('Sign out successful');
@@ -110,7 +111,10 @@ const App = () => {
 
   return (
     <main>
-      <h1 onClick={signInUser}>Hactually Hold'em</h1>
+      <h1>Hactually Hold'em</h1>
+      <section className='auth'>
+        <Authy loggedIn={loggedIn} handleLogIn={signInUser} handleLogOut={signOutUser}/>
+      </section>
       <section className='lobby-configuration'>
         <LobbyConfig setup={!isInGame} handleClick={handleClick}/>
       </section>
