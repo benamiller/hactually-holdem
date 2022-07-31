@@ -27,7 +27,7 @@ const App = () => {
     {name: 'Ben', avatar: 'https://lh3.googleusercontent.com/a-/AFdZucoRmoZsPGfdtKV-aFAgAVOl-Y4bmJPql73ywWWnBqQ=s96-c'}
   ]);
   const [startingAmount, setStartingAmount] = useState(2000);
-  const [playerIndex, setPlayerIndex] = useState('');
+  const [playerIndex, setPlayerIndex] = useState({index: 0});
   const [userPhoto, setUserPhoto] = useState('');
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const App = () => {
     set(ref(database, 'lobby/87ue8g/currentPlayerIndex'), {
       index: currentPlayerIndex
     });
-    console.log(`Server: ${currentPlayerIndex}`);
+    console.log(currentPlayerIndex);
   }
 
   const handleCheck = () => {
@@ -110,7 +110,7 @@ const App = () => {
 
   return (
     <main>
-      <h1>Hactually Hold'em</h1>
+      <h1 onClick={signInUser}>Hactually Hold'em</h1>
       <section className='lobby-configuration'>
         <LobbyConfig setup={!isInGame} handleClick={handleClick}/>
       </section>
