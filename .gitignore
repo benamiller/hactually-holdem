@@ -19,7 +19,6 @@
 .env.production.local
 .cred.tsx
 .cred.js
-cred.js
 
 npm-debug.log*
 yarn-debug.log*
