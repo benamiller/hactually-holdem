@@ -5,15 +5,17 @@ import Player from './Components/Player';
 import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
 import Deck from './Components/Deck';
+import config from './cred';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { getAuth, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
-const firebaseConfig = {
-  databaseURL: "https://hactually-holdem-default-rtdb.firebaseio.com"
-}
+const firebaseConfig = config;
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
 
 const App = () => {
   const [isInGame, setIsInGame] = useState(false);
@@ -24,7 +26,7 @@ const App = () => {
   const [playerIndex, setPlayerIndex] = useState('');
 
   useEffect(() => {
-    const indexRef = ref(database, 'lobby/' + '87ue8e' + '/currentPlayerIndex');
+    const indexRef = ref(database, 'lobby/' + '87ue8g' + '/currentPlayerIndex');
     onValue(indexRef, (snapshot) => {
       const data = snapshot.val();
       setPlayerIndex(data);
@@ -36,11 +38,37 @@ const App = () => {
     setIsInGame(!isInGame);
   }
 
+  const signInUser = () => {
+    console.log('Signing in');
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user = result.user;
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+  }
+
+  const signOutUser = () => {
+    console.log('Signing out');
+    const auth = getAuth();
+    signOut(auth)
+    .then(() => {
+      console.log('Sign out successful');
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   // Should set to next player in players array
   const finishTurn = () => {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
     setCurrentPlayerTurn(playerNames[currentPlayerIndex]);
-    set(ref(database, 'lobby/87ue8e/currentPlayerIndex'), {
+    set(ref(database, 'lobby/87ue8g/currentPlayerIndex'), {
       index: currentPlayerIndex
     });
     console.log(currentPlayerIndex);
@@ -62,7 +90,8 @@ const App = () => {
   }
 
   const players = playerNames.map((player) => {
-    return <Player 
+    return <Player
+              key={player} 
               name={player}
               money={startingAmount}
               bet={0}
@@ -74,7 +103,7 @@ const App = () => {
 
   return (
     <main>
-      <h1>Hactually Hold'em</h1>
+      <h1 onClick={signInUser}>Hactually Hold'em</h1>
       <section className='lobby-configuration'>
         <LobbyConfig setup={!isInGame} handleClick={handleClick}/>
       </section>
