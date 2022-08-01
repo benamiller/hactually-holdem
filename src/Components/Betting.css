@@ -1,7 +1,7 @@
 button {
     background-color: var(--secondary-color);
     color: var(--main-compliment-color);
-    padding: 1.2rem;
+    padding: 1rem;
     text-align: center;
     border: none;
     box-shadow: 0.2rem 0.3rem var(--main-accent-color);
