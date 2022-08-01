@@ -1,4 +1,14 @@
-.auth-container {
-    position: fixed;
-    top: 0;
+.auth-button {
+    background-color: var(--secondary-color);
+    color: var(--main-compliment-color);
+    padding: 1.2rem;
+    text-align: center;
+    border: none;
+    box-shadow: -0.2rem 0.3rem var(--main-accent-color);
+}
+
+.auth-button:active {
+    position: relative;
+    top: 2px;
+    box-shadow: 0.1rem 0.2rem var(--main-accent-color);
 }
