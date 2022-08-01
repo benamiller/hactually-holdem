@@ -9,7 +9,7 @@ import Authy from './Components/Authy';
 import config from './cred';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
-import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, Auth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, Auth, User, onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = config;
 
@@ -31,6 +31,7 @@ const App = () => {
   const [playerIndex, setPlayerIndex] = useState({index: 0});
   const [userPhoto, setUserPhoto] = useState('');
   const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     const indexRef = ref(database, 'lobby/' + '87ue8g' + '/currentPlayerIndex');
@@ -38,7 +39,18 @@ const App = () => {
       const data = snapshot.val();
       setPlayerIndex(data);
     });
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(undefined);
+      }
+    })
   }, []);
+
+  useEffect(() => {
+    setLoggedIn(user !== undefined);
+  }, [user])
   
   const handleClick = () => {
     setIsInGame(!isInGame);
