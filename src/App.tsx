@@ -6,6 +6,7 @@ import LobbyConfig from './Components/LobbyConfig';
 import Cards from './Components/Cards';
 import Deck from './Components/Deck';
 import Authy from './Components/Authy';
+import PlayArea from './Components/PlayArea';
 import config from './cred';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
@@ -134,6 +135,9 @@ const App = () => {
       </section>
       <section className='players-container'>
         {players}
+      </section>
+      <section className='play-container'>
+        <PlayArea />
       </section>
       <section className='cards-container'>
         <Cards cards={[{suit: 'hearts', value: 2}, {suit: 'clubs', value: 6}]}/>

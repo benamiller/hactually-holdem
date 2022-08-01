@@ -50,7 +50,8 @@ img {
 }
 
 .active::after {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     content: '\21A7';
     position: absolute;
+    margin: -1rem 0;
 }

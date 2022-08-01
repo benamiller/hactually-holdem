@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Noto+Serif+Display&family=Oswald:wght@200;300&family=Roboto&family=Roboto+Mono:wght@200&family=Square+Peg&display=swap');
 
+main {
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto Mono';
   font-weight: 700;
@@ -44,10 +48,19 @@ nav {
   align-items: center;
 }
 
+.play-container {
+  height: 22rem;
+}
+
 .cards-container {
   margin: 3rem 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.card-deck-container {
+  position: absolute;
+  bottom: -12rem;
 }
 
 h1 {
