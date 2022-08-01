@@ -65,11 +65,13 @@ const App = () => {
       const user = result.user;
       setUserPhoto(user.photoURL || '');
       console.log(auth);
+      console.debug('Sign in successful');
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(errorMessage);
     });
   }
 
@@ -134,7 +136,7 @@ const App = () => {
         {players}
       </section>
       <section className='cards-container'>
-        <Cards numbers={[2, 6]}/>
+        <Cards cards={[{suit: 'hearts', value: 2}, {suit: 'clubs', value: 6}]}/>
       </section>
       <section className='card-deck-container'>
         <Deck />
