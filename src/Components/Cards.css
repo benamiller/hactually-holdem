@@ -18,34 +18,48 @@
 
 .card-face .number {
     text-align: center;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 700;
 }
 
 .card-face .top-left::after {
-    content: '\2660';
     position: relative;
-    top: 0.5rem;
-    left: 1rem;
+    top: 0.3em;
+    left: 1em;
 }
 
 .card-face .top-right::after {
-    content: '\2660';
     position: relative;
-    top: -1.6rem;
-    left: 14rem;
+    top: -1em;
+    left: 8.5em;
 }
 
 .card-face .bottom-left::after {
-    content: '\2660';
     position: relative;
-    top: 15rem;
-    left: 1rem;
+    top: 9.35em;
+    left: 1em;
 }
 
 .card-face .bottom-right::after {
-    content: '\2660';
     position: relative;
-    top: 13rem;
-    left: 14rem;
+    top: 8.05em;
+    left: 8.4em;
+}
+
+.spades::after {
+    content: '\2660';
+}
+
+.diamonds::after {
+    content: '\2666';
+    color: red;
+}
+
+.hearts::after {
+    content: '\2665';
+    color: red;
+}
+
+.clubs::after {
+    content: '\2663';
 }
