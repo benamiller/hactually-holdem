@@ -1,8 +1,11 @@
 .play-area-container {
-    margin: 1rem 1rem;
     border-radius: 1rem;
+    border: 3px dotted white;
     text-align: center;
     padding: 1rem;
     height: 100%;
+    width: 60%;
+    margin: auto;
+    margin-top: 2rem;
     background-color: var(--main-accent-color);
 }
